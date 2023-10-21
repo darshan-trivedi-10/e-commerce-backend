@@ -49,6 +49,19 @@ class BuyerController {
 
   async createOrder(req, res) {
     try {
+      const { buyerId, sellerId, productId } = req.body;
+      if (!buyerId || !sellerId || !productId) {
+        return res.status(StatusCodes.BAD_REQUEST).json({
+          message: "Bad Request",
+          success: false,
+          err: "Client Error",
+          data: [],
+        });
+      }
+
+      
+
+
     } catch (error) {
       return res
         .status(error.statusCode || StatusCodes.INTERNAL_SERVER_ERROR)
