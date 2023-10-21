@@ -4,7 +4,7 @@ import user from "../model/user.js"; // Assuming your model is named "User" with
 class BuyerRepository {
   async listOfAllSellers() {
     try {
-      const result = await user.find({ type: 1 }, "username _id");
+      const result = await user.find({ type: "1" }, "username _id");
       return result;
     } catch (error) {
       throw error;

@@ -27,6 +27,14 @@ class BuyerController {
 
   async sellerItem(req, res) {
     try {
+      const response = await buyer.sellerItem(req.params.seller_id);
+      console.log(req.params);
+      return res.status(StatusCodes.OK).json({
+        message: "SUCCESS",
+        data: response,
+        success: true,
+        err: {},
+      });
     } catch (error) {
       return res
         .status(error.statusCode || StatusCodes.INTERNAL_SERVER_ERROR)
