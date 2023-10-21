@@ -55,7 +55,7 @@ class authService {
       }
 
       const token = jwt.sign({
-        username : findUser.username,
+        id : findUser._id,
         type : findUser.type
       }, SCREATEKEY, {expiresIn : '24h'});
 

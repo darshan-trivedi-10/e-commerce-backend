@@ -2,11 +2,17 @@ import jwt from 'jsonwebtoken'
 import { StatusCodes } from 'http-status-codes';
 
 const secret = "NEW_SCREATE_KEY10";
-const authMiddleWare = async (req, res, next) => {
+const tokenValidation = async (req, res, next) => {
     try {
+        console.log(req.headers);
         const token = req.headers.authorization.split(" ")[1];
+        if(!token){
+            res.status(StatusCodes.FORBIDDEN).send('access denied');
+        }
+        console.log(token);
         if (token) {
             const decoded = jwt.verify(token, secret);
+            console.log(decoded);
             req.user_info = decoded;
         }
         next();
@@ -15,4 +21,4 @@ const authMiddleWare = async (req, res, next) => {
     }
 }
 
-export default authMiddleWare;
+export default tokenValidation;

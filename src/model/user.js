@@ -10,7 +10,7 @@ const userSchema = {
     required: true,
   },
   type: {
-    // 0 for seller, 1 for user
+    // 1 for seller, 2 for user
     type: Number,
     require: true,
   },
