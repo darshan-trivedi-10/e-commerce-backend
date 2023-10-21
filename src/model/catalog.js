@@ -5,8 +5,13 @@ const catalogSchema = {
     type: mongoose.Schema.Types.ObjectId,
     ref : 'user'
   },
-  catelog : {
-    type : [Object]
+  name : {
+    type : String,
+    require : true
+  },
+  price : {
+    type : Number,
+    require : true
   }
 };
 
