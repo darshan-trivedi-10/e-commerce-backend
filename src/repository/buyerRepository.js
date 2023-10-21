@@ -13,7 +13,7 @@ class BuyerRepository {
 
   async sellerItem(id){
     try {
-        const result = await catalog.findOne(({
+        const result = await catalog.find(({
             userId : id
         }));
         return result;
