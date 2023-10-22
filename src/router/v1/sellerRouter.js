@@ -7,6 +7,6 @@ const sellerController = new SellerController();
 
 
 router.post('/create-catalog', tokenValidation, sellerController.createCatalog);
-router.post('/orders', sellerController.orders);
+router.get('/orders', tokenValidation, sellerController.orders);
 
 export default router;

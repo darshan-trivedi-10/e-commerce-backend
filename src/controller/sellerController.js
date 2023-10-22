@@ -1,5 +1,5 @@
 import { StatusCodes } from "http-status-codes";
-import sellerService from '../services/sellerService.js'
+import sellerService from "../services/sellerService.js";
 
 const seller = new sellerService();
 class SellerController {
@@ -15,7 +15,10 @@ class SellerController {
 
       console.log(userdata.id, req.body.catalog);
 
-      const response = await seller.createCatalog(userdata.id,req.body.catalog)
+      const response = await seller.createCatalog(
+        userdata.id,
+        req.body.catalog
+      );
       return res.status(StatusCodes.OK).json({
         message: "Created Catalog Succesfully",
         data: true,
@@ -36,6 +39,13 @@ class SellerController {
 
   async orders(req, res) {
     try {
+      const response = await seller.orders(req.user_info.id);
+      return res.status(StatusCodes.OK).json({
+        message: "All Your Order Fetched Succesfully",
+        data: response,
+        success: true,
+        err: {},
+      });
     } catch (error) {
       return res
         .status(error.statusCode || StatusCodes.INTERNAL_SERVER_ERROR)

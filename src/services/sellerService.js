@@ -13,6 +13,16 @@ class sellerService {
       throw error;
     }
   }
+
+  async orders(sellerId){
+    try {
+      const response = await sellerRepo.orders(sellerId);
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  }
+
 }
 
 export default sellerService;
