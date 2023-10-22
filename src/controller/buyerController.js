@@ -59,9 +59,21 @@ class BuyerController {
         });
       }
 
-      
+      const isBuyer = req.user_info.type;
+      if (isBuyer != 2) {
+        return res.status(400).json({
+          success: false,
+          message: "You must be a buyer to create a order.",
+        });
+      }
 
-
+      const response = await buyer.createOrder(buyerId, sellerId, productId);
+      return res.status(StatusCodes.OK).json({
+        message: "SUCCESS",
+        success: true,
+        data: response,
+        err: {},
+      });
     } catch (error) {
       return res
         .status(error.statusCode || StatusCodes.INTERNAL_SERVER_ERROR)

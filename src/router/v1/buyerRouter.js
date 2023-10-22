@@ -7,6 +7,6 @@ const buyerController = new BuyerController();
 
 router.get('/list-of-sellers', buyerController.listOfSellers);
 router.get('/seller-catalog/:seller_id', buyerController.sellerItem);
-router.post('/buyer/create-order/:seller_id', tokenValidation, buyerController.createOrder);
+router.post('/create-order/:seller_id', tokenValidation, buyerController.createOrder);
 
 export default router;
